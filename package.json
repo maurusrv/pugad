@@ -1,0 +1,25 @@
+{
+  "name": "pugad",
+  "version": "1.0.0",
+  "description": "twitter bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node --experimental-modules bot.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maurusrv/pugad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maurusrv/pugad/issues"
+  },
+  "homepage": "https://github.com/maurusrv/pugad#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "twit": "^2.2.11"
+  }
+}
