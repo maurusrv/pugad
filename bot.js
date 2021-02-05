@@ -75743,7 +75743,7 @@ for (let i = 0; i <= data.length; i++) {
       console.log({err, data, response})
     },
   )
-  }, index * 1000 * 60)
+  }, i * 1000 * 60)
 }
 
 
