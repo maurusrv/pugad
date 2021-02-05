@@ -8,21 +8,6 @@ const twitterAPI = new twit({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 })
 
-for (let i = 0; i <= data.length; i++) {
-  if (i === data.length) {
-    i = 0
-  }
-  setTimeout(() => {
-    twitterAPI.post('statuses/update', { 
-      status: data[i] 
-    },
-    function (err, data, response) {
-      console.log({err, data, response})
-    },
-  )
-  }, index * 1000 * 60)
-}
-
 const data = [
   "NOLI ME TANGERE",
   
@@ -75745,4 +75730,21 @@ const data = [
   "WACAS ÑG PAGSASAYSAY.",
   
   ]
+
+for (let i = 0; i <= data.length; i++) {
+  if (i === data.length) {
+    i = 0
+  }
+  setTimeout(() => {
+    twitterAPI.post('statuses/update', { 
+      status: data[i] 
+    },
+    function (err, data, response) {
+      console.log({err, data, response})
+    },
+  )
+  }, index * 1000 * 60)
+}
+
+
   
