@@ -75731,10 +75731,7 @@ const data = [
   
   ]
 
-for (let i = 0; i <= data.length; i++) {
-  if (i === data.length) {
-    i = 0
-  }
+for (let i = 0; i < data.length; i++) {
   setTimeout(() => {
     twitterAPI.post('statuses/update', { 
       status: data[i] 
