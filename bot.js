@@ -1,5 +1,5 @@
 const twit = require('twit')
-const data = require('./data')
+const data = require('data')
 
 require('dotenv').config()
 
