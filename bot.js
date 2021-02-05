@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 const twit = require('twit')
 
 const twitterAPI = new twit({
