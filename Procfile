@@ -1,0 +1,1 @@
+worker: node --experimental-modules bot.mjs
