@@ -1,5 +1,6 @@
 // require('dotenv').config()
 const twit = require('twit')
+const cron = require('node-cron')
 
 const twitterAPI = new twit({
   consumer_key: process.env.CONSUMER_KEY,
@@ -75732,7 +75733,7 @@ const data = [
   ]
 
 for (let i = 0; i < data.length; i++) {
-  setTimeout(() => {
+  cron.schedule('* * 0-23 * *', () => {
     twitterAPI.post('statuses/update', { 
       status: data[i] 
     },
@@ -75740,5 +75741,15 @@ for (let i = 0; i < data.length; i++) {
         console.log({err, data, response})
       }
     )
-  }, i * 1000 * 60 * 60 * 60)
+  })
+
+  // setTimeout(() => {
+  //   twitterAPI.post('statuses/update', { 
+  //     status: data[i] 
+  //   },
+  //     function (err, data, response) {
+  //       console.log({err, data, response})
+  //     }
+  //   )
+  // }, i * 1000 * 60 * 60 * 60)
 }
