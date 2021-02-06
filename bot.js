@@ -75736,12 +75736,9 @@ for (let i = 0; i < data.length; i++) {
     twitterAPI.post('statuses/update', { 
       status: data[i] 
     },
-    function (err, data, response) {
-      console.log({err, data, response})
-    },
-  )
-  }, i * 1000 * 60)
+      function (err, data, response) {
+        console.log({err, data, response})
+      }
+    )
+  }, i * 1000 * 60 * 60 * 60)
 }
-
-
-  
