@@ -1,13 +1,13 @@
 // require('dotenv').config()
 const twit = require('twit')
-const cron = require('node-cron')
+const cronJob = require('cron').CronJob;
 
-const twitterAPI = new twit({
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET_KEY,
-  access_token: process.env.ACCESS_TOKEN,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
-})
+// const twitterAPI = new twit({
+//   consumer_key: process.env.CONSUMER_KEY,
+//   consumer_secret: process.env.CONSUMER_SECRET_KEY,
+//   access_token: process.env.ACCESS_TOKEN,
+//   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+// })
 
 const data = [
   "NOLI ME TANGERE",
@@ -75732,24 +75732,15 @@ const data = [
   
   ]
 
-for (let i = 0; i < data.length; i++) {
-  cron.schedule('0 0 */1 * * *', () => {
+data.forEach((phrase, index) => {
+  const tweetDate = new Date(new Date().getTime() + (1000 * 60 * 60 * (index + 1)))
+  const tweetJob = new cronJob(tweetDate, function () {
     twitterAPI.post('statuses/update', { 
-      status: data[i] 
+      status: phrase, 
     },
       function (err, data, response) {
         console.log({err, data, response})
-      }
-    )
-  })
-
-  // setTimeout(() => {
-  //   twitterAPI.post('statuses/update', { 
-  //     status: data[i] 
-  //   },
-  //     function (err, data, response) {
-  //       console.log({err, data, response})
-  //     }
-  //   )
-  // }, i * 1000 * 60 * 60 * 60)
-}
+      })
+    console.log({tweetDate, tweetJob, phrase})
+  }, null, true)
+})
