@@ -75733,7 +75733,7 @@ const data = [
   ]
 
 for (let i = 0; i < data.length; i++) {
-  cron.schedule('*/0 * * * *', () => {
+  cron.schedule('0 0 */1 * * *', () => {
     twitterAPI.post('statuses/update', { 
       status: data[i] 
     },
