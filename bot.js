@@ -75745,5 +75745,5 @@ data.forEach((phrase, index) => {
       })
       console.log({tweetDate, tweetJob, phrase})
     }, null, true)
-  }
+  } else console.log(`skipping ${phrase}`)
 })
