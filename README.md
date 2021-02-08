@@ -1,2 +1,2 @@
 # pugad
-twitter bot
+twitter bot, docs coming soon!
