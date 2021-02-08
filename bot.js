@@ -75737,7 +75737,7 @@ const data = [
 const lastIndex = process.env.LAST_INDEX
 
 data.forEach((phrase, index) => {
-  if (lastIndex >= index) {
+  if (lastIndex <= index) {
     const timeNow = Date.now()
     const tweetDate = new Date(timeNow + (1000 * 60 * 60 * (index + 1)))
     const tweetJob = new cronJob(tweetDate, function () {
