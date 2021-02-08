@@ -9,6 +9,8 @@ const twitterAPI = new twit({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET,
 })
 
+
+
 const data = [
   "NOLI ME TANGERE",
   
@@ -75732,8 +75734,11 @@ const data = [
   
   ]
 
+const lastIndex = process.env.LAST_INDEX
+console.log(lastIndex)
+
 data.forEach((phrase, index) => {
-  if (process.env.LAST_INDEX >= index) {
+  if (lastIndex >= index) {
     const timeNow = Date.now()
     const tweetDate = new Date(timeNow + (1000 * 60 * 60 * (index + 1)))
     const tweetJob = new cronJob(tweetDate, function () {
