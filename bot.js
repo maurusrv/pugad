@@ -75733,14 +75733,17 @@ const data = [
   ]
 
 data.forEach((phrase, index) => {
-  const tweetDate = new Date(new Date().getTime() + (1000 * 60 * 60 * (index + 1)))
-  const tweetJob = new cronJob(tweetDate, function () {
-    twitterAPI.post('statuses/update', { 
-      status: phrase, 
-    },
-      function (err, data, response) {
-        console.log({err, data, response})
+  if (process.env.LAST_INDEX >= index) {
+    const timeNow = Date.now()
+    const tweetDate = new Date(timeNow + (1000 * 60 * 60 * (index + 1)))
+    const tweetJob = new cronJob(tweetDate, function () {
+      twitterAPI.post('statuses/update', { 
+        status: phrase, 
+      },
+        function (err, data, response) {
+          console.log({err, data, response})
       })
-    console.log({tweetDate, tweetJob, phrase})
-  }, null, true)
+      console.log({tweetDate, tweetJob, phrase})
+    }, null, true)
+  }
 })
