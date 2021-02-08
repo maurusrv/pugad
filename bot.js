@@ -75735,7 +75735,6 @@ const data = [
   ]
 
 const lastIndex = process.env.LAST_INDEX
-console.log(lastIndex)
 
 data.forEach((phrase, index) => {
   if (lastIndex >= index) {
@@ -75750,5 +75749,5 @@ data.forEach((phrase, index) => {
       })
       console.log({tweetDate, tweetJob, phrase})
     }, null, true)
-  } else console.log(`skipping index: ${index} phrase: ${phrase}`)
+  } else console.log(`last index is ${lastIndex} skipping index: ${index} phrase: ${phrase}`)
 })
