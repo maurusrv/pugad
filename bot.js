@@ -15,10 +15,10 @@ const twitterAPI = new twit({
   find the last index and set it on environment variables
 */ 
 const lastIndex = process.env.LAST_INDEX 
+const timeNow = Date.now()
 
 data.forEach((phrase, index) => {
   if (lastIndex <= index) {
-    const timeNow = Date.now()
     const tweetDate = new Date(timeNow + (1000 * 60 * 60 * (index + 1))) // currently tweeting every next hour
     const tweetJob = new cronJob(tweetDate, function () {
       twitterAPI.post('statuses/update', { 
@@ -27,7 +27,6 @@ data.forEach((phrase, index) => {
         function (err, data, response) {
           console.log({err, data, response})
       })
-      // console.log({tweetDate, tweetJob, phrase})
     }, null, true)
   } else console.log(`last index is ${lastIndex} skipping index: ${index} phrase: ${phrase}`) // checking log for now to check if right index is being used to tweet
 })
