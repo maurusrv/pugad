@@ -19,7 +19,7 @@ const timeNow = Date.now()
 
 data.forEach((phrase, index) => {
   if (lastIndex <= index) {
-    const tweetDate = new Date(timeNow + (1000 * 60 * 60 * (index + 1))) // currently tweeting every next hour
+    const tweetDate = new Date(timeNow + (1000 * 60 * 60 * (index))) // currently tweeting every next hour
     const tweetJob = new cronJob(
       tweetDate, 
       function () {
@@ -36,3 +36,5 @@ data.forEach((phrase, index) => {
       true, 'Asia/Manila') // auto start
   } else console.log(`last index is ${lastIndex} skipping index: ${index} phrase: ${phrase}`) // checking log for now to check if right index is being used to tweet
 })
+
+console.log(`Next tweet will be at ${new Date(timeNow + (1000 * 60 * 60 * (lastIndex)))}`)
